@@ -18,23 +18,23 @@ class SiteController extends Controller
     public function behaviors()
     {
         return [
-            'access' => [
-                'class' => AccessControl::className(),
-                'only' => ['logout'],
-                'rules' => [
-                    [
-                        'actions' => ['logout'],
-                        'allow' => true,
-                        'roles' => ['@'],
-                    ],
-                ],
-            ],
-            'verbs' => [
-                'class' => VerbFilter::className(),
-                'actions' => [
-                    'logout' => ['post'],
-                ],
-            ],
+        'access' => [
+        'class' => AccessControl::className(),
+        'only' => ['logout'],
+        'rules' => [
+        [
+        'actions' => ['logout'],
+        'allow' => true,
+        'roles' => ['@'],
+        ],
+        ],
+        ],
+        'verbs' => [
+        'class' => VerbFilter::className(),
+        'actions' => [
+        'logout' => ['post'],
+        ],
+        ],
         ];
     }
 
@@ -44,13 +44,13 @@ class SiteController extends Controller
     public function actions()
     {
         return [
-            'error' => [
-                'class' => 'yii\web\ErrorAction',
-            ],
-            'captcha' => [
-                'class' => 'yii\captcha\CaptchaAction',
-                'fixedVerifyCode' => YII_ENV_TEST ? 'testme' : null,
-            ],
+        'error' => [
+        'class' => 'yii\web\ErrorAction',
+        ],
+        'captcha' => [
+        'class' => 'yii\captcha\CaptchaAction',
+        'fixedVerifyCode' => YII_ENV_TEST ? 'testme' : null,
+        ],
         ];
     }
 
@@ -83,7 +83,7 @@ class SiteController extends Controller
         $model->password = '';
         return $this->render('login', [
             'model' => $model,
-        ]);
+            ]);
     }
 
     /**
@@ -113,7 +113,7 @@ class SiteController extends Controller
         }
         return $this->render('contact', [
             'model' => $model,
-        ]);
+            ]);
     }
 
     /**
@@ -125,4 +125,21 @@ class SiteController extends Controller
     {
         return $this->render('about');
     }
+
+    public function actionRegisterPatient()
+    {
+        $model = new \app\models\Patient();
+
+        if ($model->load(Yii::$app->request->post())) {
+            if ($model->validate()) {
+            // form inputs are valid, do something here
+                return;
+            }
+        }
+
+        return $this->render('register-patient', [
+            'model' => $model,
+            ]);
+    }
+
 }
