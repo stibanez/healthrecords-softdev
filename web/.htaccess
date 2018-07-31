@@ -1,4 +1,8 @@
 RewriteEngine on
+<<<<<<< HEAD
+=======
+
+>>>>>>> 520766a6f734a2895372d4f7f7d65f8e9072ddbe
 # If a directory or a file exists, use it directly
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
