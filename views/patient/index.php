@@ -26,7 +26,6 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\SerialColumn'],
 
             'fullName',
-            'birthdate',
             //'sex',
             //'civil_status',
             //'place_of_birth',
