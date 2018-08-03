@@ -15,15 +15,11 @@ class PatientSearch extends Patient
     /**
      * @inheritdoc
      */
-    public $fullName;
-
     public function rules()
     {
         return [
-        [['id', 'zip'], 'integer'],
-        [['first_name', 'middle_name', 'last_name', 'birthdate', 'sex', 'civil_status', 'place_of_birth', 'nationality', 'religion', 'unitno_address', 'bldng_name', 'house_bldng_no', 'street', 'subdv_vill', 'barangay', 'city', 'province', 'email', 'phone_no'], 'safe'],
-        [['fullName'], 'safe'],
-
+            [['id', 'zip'], 'integer'],
+            [['first_name', 'middle_name', 'last_name', 'birthdate', 'sex', 'civil_status', 'place_of_birth', 'nationality', 'religion', 'address_line1', 'address_line2', 'city', 'province', 'email', 'phone_no'], 'safe'],
         ];
     }
 
@@ -51,7 +47,7 @@ class PatientSearch extends Patient
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
-            ]);
+        ]);
 
         $this->load($params);
 
@@ -66,27 +62,23 @@ class PatientSearch extends Patient
             'id' => $this->id,
             'birthdate' => $this->birthdate,
             'zip' => $this->zip,
-            ]);
+        ]);
 
         $query->andFilterWhere(['like', 'first_name', $this->first_name])
-        ->andFilterWhere(['like', 'middle_name', $this->middle_name])
-        ->andFilterWhere(['like', 'last_name', $this->last_name])
-        ->andFilterWhere(['like', 'sex', $this->sex])
-        ->andFilterWhere(['like', 'civil_status', $this->civil_status])
-        ->andFilterWhere(['like', 'place_of_birth', $this->place_of_birth])
-        ->andFilterWhere(['like', 'nationality', $this->nationality])
-        ->andFilterWhere(['like', 'religion', $this->religion])
-        ->andFilterWhere(['like', 'unitno_address', $this->unitno_address])
-        ->andFilterWhere(['like', 'bldng_name', $this->bldng_name])
-        ->andFilterWhere(['like', 'house_bldng_no', $this->house_bldng_no])
-        ->andFilterWhere(['like', 'street', $this->street])
-        ->andFilterWhere(['like', 'subdv_vill', $this->subdv_vill])
-        ->andFilterWhere(['like', 'barangay', $this->barangay])
-        ->andFilterWhere(['like', 'city', $this->city])
-        ->andFilterWhere(['like', 'province', $this->province])
-        ->andFilterWhere(['like', 'email', $this->email])
-        ->andFilterWhere(['like', 'phone_no', $this->phone_no]);
-        
+            ->andFilterWhere(['like', 'middle_name', $this->middle_name])
+            ->andFilterWhere(['like', 'last_name', $this->last_name])
+            ->andFilterWhere(['like', 'sex', $this->sex])
+            ->andFilterWhere(['like', 'civil_status', $this->civil_status])
+            ->andFilterWhere(['like', 'place_of_birth', $this->place_of_birth])
+            ->andFilterWhere(['like', 'nationality', $this->nationality])
+            ->andFilterWhere(['like', 'religion', $this->religion])
+            ->andFilterWhere(['like', 'address_line1', $this->address_line1])
+            ->andFilterWhere(['like', 'address_line2', $this->address_line2])
+            ->andFilterWhere(['like', 'city', $this->city])
+            ->andFilterWhere(['like', 'province', $this->province])
+            ->andFilterWhere(['like', 'email', $this->email])
+            ->andFilterWhere(['like', 'phone_no', $this->phone_no]);
+
         return $dataProvider;
     }
 }

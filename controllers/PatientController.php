@@ -20,12 +20,12 @@ class PatientController extends Controller
     public function behaviors()
     {
         return [
-        'verbs' => [
-        'class' => VerbFilter::className(),
-        'actions' => [
-        'delete' => ['POST'],
-        ],
-        ],
+            'verbs' => [
+                'class' => VerbFilter::className(),
+                'actions' => [
+                    'delete' => ['POST'],
+                ],
+            ],
         ];
     }
 
@@ -41,7 +41,7 @@ class PatientController extends Controller
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
-            ]);
+        ]);
     }
 
     /**
@@ -54,7 +54,7 @@ class PatientController extends Controller
     {
         return $this->render('view', [
             'model' => $this->findModel($id),
-            ]);
+        ]);
     }
 
     /**
@@ -72,7 +72,7 @@ class PatientController extends Controller
 
         return $this->render('create', [
             'model' => $model,
-            ]);
+        ]);
     }
 
     /**
@@ -92,7 +92,7 @@ class PatientController extends Controller
 
         return $this->render('update', [
             'model' => $model,
-            ]);
+        ]);
     }
 
     /**
@@ -123,8 +123,5 @@ class PatientController extends Controller
         }
 
         throw new NotFoundHttpException('The requested page does not exist.');
-    }
-    public function fullName() {
-        return $this->firstName . ' ' . $this->middleName . ' ' . $this->lastName;
     }
 }

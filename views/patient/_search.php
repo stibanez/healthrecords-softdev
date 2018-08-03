@@ -35,17 +35,9 @@ use yii\widgets\ActiveForm;
 
     <?php // echo $form->field($model, 'religion') ?>
 
-    <?php // echo $form->field($model, 'unitno_address') ?>
+    <?php // echo $form->field($model, 'address_line1') ?>
 
-    <?php // echo $form->field($model, 'bldng_name') ?>
-
-    <?php // echo $form->field($model, 'house_bldng_no') ?>
-
-    <?php // echo $form->field($model, 'street') ?>
-
-    <?php // echo $form->field($model, 'subdv_vill') ?>
-
-    <?php // echo $form->field($model, 'barangay') ?>
+    <?php // echo $form->field($model, 'address_line2') ?>
 
     <?php // echo $form->field($model, 'city') ?>
 

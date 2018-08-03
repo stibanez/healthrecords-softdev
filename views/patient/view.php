@@ -6,7 +6,7 @@ use yii\widgets\DetailView;
 /* @var $this yii\web\View */
 /* @var $model app\models\Patient */
 
-$this->title = $model->first_name;
+$this->title = $model->id;
 $this->params['breadcrumbs'][] = ['label' => 'Patients', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
@@ -38,12 +38,8 @@ $this->params['breadcrumbs'][] = $this->title;
             'place_of_birth',
             'nationality',
             'religion',
-            'unitno_address:ntext',
-            'bldng_name',
-            'house_bldng_no:ntext',
-            'street',
-            'subdv_vill',
-            'barangay',
+            'address_line1',
+            'address_line2',
             'city',
             'province',
             'zip',

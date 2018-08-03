@@ -12,17 +12,13 @@ use Yii;
  * @property string $middle_name
  * @property string $last_name
  * @property string $birthdate
- * @property int $sex
- * @property int $civil_status
+ * @property string $sex
+ * @property string $civil_status
  * @property string $place_of_birth
  * @property string $nationality
  * @property string $religion
- * @property string $unitno_address
- * @property string $bldng_name
- * @property string $house_bldng_no
- * @property string $street
- * @property string $subdv_vill
- * @property string $barangay
+ * @property string $address_line1
+ * @property string $address_line2
  * @property string $city
  * @property string $province
  * @property int $zip
@@ -47,13 +43,12 @@ class Patient extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-        [['first_name', 'last_name', 'birthdate', 'sex', 'civil_status', 'place_of_birth', 'nationality', 'religion', 'province', 'zip', 'email', 'phone_no'], 'required'],
-        [['birthdate'], 'safe'],
-        [['unitno_address', 'house_bldng_no'], 'string'],
-        [['zip'], 'integer'],
-        [['first_name', 'middle_name', 'last_name', 'place_of_birth', 'nationality', 'religion', 'bldng_name', 'street', 'subdv_vill', 'barangay', 'city', 'province', 'phone_no'], 'string', 'max' => 45],
-        [['sex', 'civil_status'], 'string', 'max' => 4],
-        [['email'], 'string', 'max' => 85],
+            [['first_name', 'last_name', 'birthdate', 'sex', 'civil_status', 'place_of_birth', 'nationality', 'religion', 'address_line1', 'city', 'province', 'zip', 'email', 'phone_no'], 'required'],
+            [['birthdate'], 'safe'],
+            [['zip'], 'integer'],
+            [['first_name', 'middle_name', 'last_name', 'place_of_birth', 'nationality', 'religion', 'address_line1', 'address_line2', 'city', 'province', 'phone_no'], 'string', 'max' => 45],
+            [['sex', 'civil_status'], 'string', 'max' => 10],
+            [['email'], 'string', 'max' => 85],
         ];
     }
 
@@ -63,27 +58,23 @@ class Patient extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-        'id' => 'ID',
-        'first_name' => 'First Name',
-        'middle_name' => 'Middle Name',
-        'last_name' => 'Last Name',
-        'birthdate' => 'Birthdate (mm/dd/yyyy)',
-        'sex' => 'Sex',
-        'civil_status' => 'Civil Status',
-        'place_of_birth' => 'Place Of Birth',
-        'nationality' => 'Nationality',
-        'religion' => 'Religion',
-        'unitno_address' => 'Unit No.',
-        'bldng_name' => 'Bldng Name',
-        'house_bldng_no' => 'House/Building No',
-        'street' => 'Street',
-        'subdv_vill' => 'Subdivision/Village',
-        'barangay' => 'Barangay',
-        'city' => 'City',
-        'province' => 'Province',
-        'zip' => 'Zip',
-        'email' => 'Email',
-        'phone_no' => 'Phone No',
+            'id' => 'ID',
+            'first_name' => 'First Name',
+            'middle_name' => 'Middle Name',
+            'last_name' => 'Last Name',
+            'birthdate' => 'Birthdate',
+            'sex' => 'Sex',
+            'civil_status' => 'Civil Status',
+            'place_of_birth' => 'Place Of Birth',
+            'nationality' => 'Nationality',
+            'religion' => 'Religion',
+            'address_line1' => 'Address Line1',
+            'address_line2' => 'Address Line2',
+            'city' => 'City',
+            'province' => 'Province',
+            'zip' => 'Zip',
+            'email' => 'Email',
+            'phone_no' => 'Phone No',
         ];
     }
 
@@ -94,7 +85,4 @@ class Patient extends \yii\db\ActiveRecord
     {
         return $this->hasMany(MedicalRecord::className(), ['patient_id' => 'id']);
     }
-    public function getFullName() {
-        return $this->first_name . ' ' . substr($this->middle_name, 0, 1). '. ' . $this->last_name;
- }
 }
