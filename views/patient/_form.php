@@ -1,7 +1,7 @@
 <?php
 
 use yii\helpers\Html;
-use yii\widgets\ActiveForm;
+use yii\bootstrap\ActiveForm
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Patient */
@@ -10,19 +10,22 @@ use yii\widgets\ActiveForm;
 
 <div class="patient-form">
 
-    <?php $form = ActiveForm::begin(); ?>
+    <?php $form = ActiveForm::begin([
+	]); ?>
+    <?= $form->field($model, 'first_name')->textInput(['maxlength' => '30','style'=>'width:200px;']) ?>
 
-    <?= $form->field($model, 'first_name')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'middle_name')->textInput(['maxlength' => '30','style'=>'width:150px']) ?>
 
-    <?= $form->field($model, 'middle_name')->textInput(['maxlength' => true]) ?>
-
-    <?= $form->field($model, 'last_name')->textInput(['maxlength' => true]) ?>
-
+    <?= $form->field($model, 'last_name')->textInput(['maxlength' => '30','style'=>'width:200px']) ?>
+ 
     <?= $form->field($model, 'birthdate')->textInput() ?>
+    <?= $form->field($model, 'sex')->dropDownList(
+            ['Male' => 'Male', 'Female' => 'Female']
+    ); ?>
 
-    <?= $form->field($model, 'sex')->textInput(['maxlength' => true]) ?>
-
-    <?= $form->field($model, 'civil_status')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'civil_status')->dropDownList(
+            ['Single' => 'Single', 'Married' => 'Married', 'Separated' => 'Separated', 'Widowed' => 'Widowed']
+    ); ?>
 
     <?= $form->field($model, 'place_of_birth')->textInput(['maxlength' => true]) ?>
 

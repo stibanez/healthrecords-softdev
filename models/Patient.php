@@ -68,13 +68,13 @@ class Patient extends \yii\db\ActiveRecord
             'place_of_birth' => 'Place Of Birth',
             'nationality' => 'Nationality',
             'religion' => 'Religion',
-            'address_line1' => 'Address Line1',
-            'address_line2' => 'Address Line2',
+            'address_line1' => 'Address Line 1',
+            'address_line2' => 'Address Line 2',
             'city' => 'City',
             'province' => 'Province',
             'zip' => 'Zip',
             'email' => 'Email',
-            'phone_no' => 'Phone No',
+            'phone_no' => 'Phone Number',
         ];
     }
 
