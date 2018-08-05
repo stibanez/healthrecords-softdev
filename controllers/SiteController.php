@@ -125,6 +125,11 @@ class SiteController extends Controller
     {
         return $this->render('about');
     }
+    
+    public function actionRegister()
+    {
+        return $this->render('register');
+    }
 
     public function actionRegisterPatient()
     {

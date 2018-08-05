@@ -85,4 +85,8 @@ class Patient extends \yii\db\ActiveRecord
     {
         return $this->hasMany(MedicalRecord::className(), ['patient_id' => 'id']);
     }
+    
+    public function getFullName() {
+        return $this->relUser.first_name . ' ' . $this->relUser.last_name;
+    }
 }
